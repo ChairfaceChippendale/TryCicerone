@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.fragment_container.*
 class FirstFragment : Fragment() {
 
     companion object {
-        fun inst(@ColorInt color: Int, text: String): FirstFragment {
+        fun inst(): FirstFragment {
             return FirstFragment()
         }
     }

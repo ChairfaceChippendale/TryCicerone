@@ -6,11 +6,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.Toast
+import com.ujujzk.trycicerone.BackButtonListener
 import com.ujujzk.trycicerone.R
-import kotlinx.android.synthetic.main.fragment_color.*
+import com.ujujzk.trycicerone.second.pink.CyanFragment
+import org.koin.android.ext.android.inject
+import ru.terrakok.cicerone.Router
+import ru.terrakok.cicerone.android.support.SupportAppScreen
 
 
-class GreenFragment : Fragment() {
+class GreenFragment : Fragment(), BackButtonListener {
+
+    val router: Router by inject()
 
     companion object {
         fun inst(): GreenFragment {
@@ -23,9 +31,24 @@ class GreenFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_color, container, false)
         root.setBackgroundColor(Color.GREEN)
 
-        button.text = "Open Cyan"
-        subbutton.visibility = View.GONE
+        root.findViewById<Button>(R.id.button).apply {
+            text = "Open Cyan"
+            setOnClickListener {
+                router?.navigateTo(object : SupportAppScreen() {
+                    override fun getFragment(): Fragment {
+                        return CyanFragment.inst()
+                    }
+                })
+            }
+        }
+
+        root.findViewById<Button>(R.id.subbutton).visibility = View.GONE
         return root
+    }
+
+    override fun onBackPressed(): Boolean {
+        router.exit()
+        return true
     }
 
 }

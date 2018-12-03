@@ -97,8 +97,6 @@ class MainActivity : AppCompatActivity() {
 
 }
 
-class SwitchFragment(val fr: Fragment) : Command {
-
-}
+class SwitchFragment(val fr: Fragment) : Command
 
 

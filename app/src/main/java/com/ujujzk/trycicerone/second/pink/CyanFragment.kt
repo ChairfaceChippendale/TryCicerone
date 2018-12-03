@@ -15,7 +15,7 @@ import ru.terrakok.cicerone.Router
 
 class CyanFragment : Fragment(), BackButtonListener {
 
-    val router: Router by inject()
+    val router: Router by inject("second")
 
     companion object {
         fun inst(): CyanFragment {

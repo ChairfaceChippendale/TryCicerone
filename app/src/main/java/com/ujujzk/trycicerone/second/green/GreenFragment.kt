@@ -18,7 +18,7 @@ import ru.terrakok.cicerone.android.support.SupportAppScreen
 
 class GreenFragment : Fragment(), BackButtonListener {
 
-    val router: Router by inject()
+    val router: Router by inject("second")
 
     companion object {
         fun inst(): GreenFragment {

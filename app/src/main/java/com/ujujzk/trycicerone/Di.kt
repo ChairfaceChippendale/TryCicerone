@@ -6,11 +6,8 @@ import ru.terrakok.cicerone.Router
 
 val appModule = module {
 
-    single<Cicerone<Router>>{ Cicerone.create() }
-
-    single<Router> { get<Cicerone<Router>>().router }
-
-
-
-
+//    single<Cicerone<Router>>{ Cicerone.create() }
+//
+//    single<Router> { get<Cicerone<Router>>().router }
+//
 }

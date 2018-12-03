@@ -6,11 +6,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import com.ujujzk.trycicerone.R
 import kotlinx.android.synthetic.main.fragment_color.*
+import org.koin.android.ext.android.inject
+import ru.terrakok.cicerone.Router
 
 
 class YellowFragment : Fragment() {
+
+    val router: Router by inject("first")
 
     companion object {
         fun inst(): YellowFragment {
@@ -22,8 +27,8 @@ class YellowFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_color, container, false)
         root.setBackgroundColor(Color.YELLOW)
 
-        button.visibility = View.GONE
-        subbutton.visibility = View.GONE
+        root.findViewById<Button>(R.id.button).visibility = View.GONE
+        root.findViewById<Button>(R.id.subbutton).visibility = View.GONE
 
         return root
     }

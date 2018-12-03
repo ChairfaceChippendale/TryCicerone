@@ -20,7 +20,7 @@ import ru.terrakok.cicerone.android.support.SupportAppScreen
 class SecondFragment : TabFragment() {
 
 
-    val cicerone: Cicerone<Router> by inject()
+    val cicerone: Cicerone<Router> by inject("second")
 
     lateinit var navigator: SupportAppNavigator
 

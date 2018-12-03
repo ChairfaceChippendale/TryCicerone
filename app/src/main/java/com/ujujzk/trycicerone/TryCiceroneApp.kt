@@ -9,6 +9,6 @@ class TryCiceroneApp: Application() {
     override fun onCreate() {
         super.onCreate()
 
-        startKoin(this, listOf(firstModule, secondModule))
+        startKoin(this, listOf(appModule, firstModule, secondModule))
     }
 }

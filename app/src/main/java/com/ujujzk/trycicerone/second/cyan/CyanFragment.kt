@@ -1,4 +1,4 @@
-package com.ujujzk.trycicerone.second.pink
+package com.ujujzk.trycicerone.second.cyan
 
 import android.graphics.Color
 import android.support.v4.app.Fragment

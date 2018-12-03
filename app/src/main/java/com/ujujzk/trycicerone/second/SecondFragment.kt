@@ -17,12 +17,12 @@ import ru.terrakok.cicerone.android.support.SupportAppNavigator
 import ru.terrakok.cicerone.android.support.SupportAppScreen
 
 
-class SecondFragment : TabFragment() {
+class SecondFragment : TabFragment("SecondFragment") {
 
 
     val cicerone: Cicerone<Router> by inject("second")
 
-    lateinit var navigator: SupportAppNavigator
+    var navigator: SupportAppNavigator? = null
 
     companion object {
         fun inst(): SecondFragment {
@@ -36,8 +36,9 @@ class SecondFragment : TabFragment() {
         val title = root.findViewById<TextView>(R.id.title)
         title.text = "Second"
         root.setBackgroundColor(Color.LTGRAY)
-
-        navigator = SupportAppNavigator(activity, childFragmentManager, R.id.container)
+        if (navigator == null) {
+            navigator = SupportAppNavigator(activity, childFragmentManager, R.id.container)
+        }
         return root
     }
 
@@ -55,7 +56,7 @@ class SecondFragment : TabFragment() {
         super.onActivityCreated(savedInstanceState)
 
         if (childFragmentManager.findFragmentById(R.id.container) == null) {
-            cicerone.router.replaceScreen(object :SupportAppScreen(){
+            cicerone.router.replaceScreen(object : SupportAppScreen() {
                 override fun getFragment(): Fragment {
                     val f = GreenFragment.inst()
                     return f

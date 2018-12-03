@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import com.ujujzk.trycicerone.BackButtonListener
 import com.ujujzk.trycicerone.R
 import com.ujujzk.trycicerone.first.red.RedFragment
 import com.ujujzk.trycicerone.first.yellow.YellowFragment
@@ -16,7 +17,7 @@ import ru.terrakok.cicerone.Router
 import ru.terrakok.cicerone.android.support.SupportAppScreen
 
 
-class BlueFragment : Fragment() {
+class BlueFragment : Fragment(), BackButtonListener {
 
     val router: Router by inject("first")
 
@@ -34,7 +35,7 @@ class BlueFragment : Fragment() {
         root.findViewById<Button>(R.id.button).apply {
             text = "Open Red"
             setOnClickListener {
-                router?.navigateTo(object : SupportAppScreen() {
+                router.navigateTo(object : SupportAppScreen() {
                     override fun getFragment(): Fragment {
                         return RedFragment.inst()
                     }
@@ -54,6 +55,11 @@ class BlueFragment : Fragment() {
         }
 
         return root
+    }
+
+    override fun onBackPressed(): Boolean {
+        router.exit()
+        return true
     }
 
 }

@@ -17,11 +17,11 @@ import ru.terrakok.cicerone.android.support.SupportAppNavigator
 import ru.terrakok.cicerone.android.support.SupportAppScreen
 
 
-class FirstFragment : TabFragment() {
+class FirstFragment : TabFragment("FirstFragment") {
 
     val cicerone: Cicerone<Router> by inject("first")
 
-    lateinit var navigator: SupportAppNavigator
+    private var navigator: SupportAppNavigator? = null
 
     companion object {
         fun inst(): FirstFragment {
@@ -35,8 +35,10 @@ class FirstFragment : TabFragment() {
         val title = root.findViewById<TextView>(R.id.title)
         title.text = "First"
         root.setBackgroundColor(Color.GRAY)
+        if (navigator == null) {
+            navigator = SupportAppNavigator(activity, childFragmentManager, R.id.container)
+        }
 
-        navigator = SupportAppNavigator(activity, childFragmentManager, R.id.container)
         return root
     }
 

@@ -2,7 +2,7 @@ package com.ujujzk.trycicerone
 
 import android.support.v4.app.Fragment
 
-abstract class TabFragment :Fragment(), BackButtonListener {
+abstract class TabFragment(val tagd: String) :Fragment(), BackButtonListener {
 
     override fun onBackPressed(): Boolean {
         return if (isAdded) {

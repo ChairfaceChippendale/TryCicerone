@@ -7,10 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.Toast
 import com.ujujzk.trycicerone.BackButtonListener
 import com.ujujzk.trycicerone.R
-import com.ujujzk.trycicerone.second.pink.CyanFragment
+import com.ujujzk.trycicerone.second.cyan.CyanFragment
 import org.koin.android.ext.android.inject
 import ru.terrakok.cicerone.Router
 import ru.terrakok.cicerone.android.support.SupportAppScreen

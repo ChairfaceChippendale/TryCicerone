@@ -37,8 +37,6 @@ class MainActivity : AppCompatActivity() {
 
         if (savedInstanceState == null) {
             localCicerone.router.switchFragment(firstFragment)
-        } else {
-
         }
     }
 
@@ -51,12 +49,12 @@ class MainActivity : AppCompatActivity() {
         private fun applyCommand(command: Command) {
             when (command) {
                 is Back -> finish()
-                is SwitchFragment -> changeTab(command.fr)
+                is SwitchFragment -> changeTab(command.fr as TabFragment)
             }
         }
 
         //we could also use attach() and detach() instead of show() and hide().
-        private fun changeTab(targetFragment: Fragment) {
+        private fun changeTab(targetFragment: TabFragment) {
             with(supportFragmentManager.beginTransaction()) {
 
                 supportFragmentManager.fragments.filter{ it != targetFragment }.forEach {
@@ -69,7 +67,7 @@ class MainActivity : AppCompatActivity() {
                     if (it.isAdded) {
                         show(it)
                     } else {
-                        add(R.id.container, it)
+                        add(R.id.container, it, it.tagd)
                     }
                     it.userVisibleHint = true
                 }
